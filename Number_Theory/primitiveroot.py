@@ -1,29 +1,34 @@
-
-
 def main():
  primlist = []
  x = -1   
-# a = int(input("Checking numbers 1-"))
+
  modulus = input("Please enter the modulus: ")
  if (modulus == "x"):
     return
  modulus = int(modulus)
  print("Printing out a list of all primitive roots modulo ", modulus)
+ power_candidates = []
+ phiOfModulus = phi(modulus)
+ for exponent in range (1, phi(modulus)+1):
+  if (phiOfModulus%exponent == 0): # need the exponent to divide phi(modulus)
+      power_candidates.append(exponent)
+
  for base in range(1, modulus+1): # j will be the base
   if (GCD(base, modulus)!=1):  # need (j, modulus) = 1
      continue
-  for i in range (1, modulus+1): # only need to check powers that divide b
-   val = base**i
+  for i in range (0, len(power_candidates)): # only need to check powers that divide b
+   exponent = power_candidates[i]
+  # print (exponent)
+   val = base**exponent
    reducedval = (val-(val//modulus)*modulus) 
    if (reducedval == 1):
-      x = i
+      x = exponent
       break
-  r = phi(modulus)
-  if (x == r):
+  if (x == phiOfModulus):
    primlist.append(base)
  print("") 
  if (len(primlist)==0):
-    print("There are no primitive roots modulo ", modulo)
+    print("There are no primitive roots modulo ", modulus)
  else:
      print(primlist)
  print("")    
