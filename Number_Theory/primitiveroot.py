@@ -1,28 +1,34 @@
 
 
-def simp():
+def main():
  primlist = []
  x = -1   
 # a = int(input("Checking numbers 1-"))
- b = int(input("Put in modulus: "))
- for j in range(1, b+1):
-  if (GCD(j, b)!=1):
+ modulus = input("Please enter the modulus: ")
+ if (modulus == "x"):
+    return
+ modulus = int(modulus)
+ print("Printing out a list of all primitive roots modulo ", modulus)
+ for base in range(1, modulus+1): # j will be the base
+  if (GCD(base, modulus)!=1):  # need (j, modulus) = 1
      continue
-  for i in range (1, b+1): # only need to check powers that divide b
-   val = j**i
-   reducedval = (val-(val//b)*b) 
+  for i in range (1, modulus+1): # only need to check powers that divide b
+   val = base**i
+   reducedval = (val-(val//modulus)*modulus) 
    if (reducedval == 1):
       x = i
       break
-  r = phi(b)
+  r = phi(modulus)
   if (x == r):
-   primlist.append(j)
- 
+   primlist.append(base)
+ print("") 
  if (len(primlist)==0):
-    print("No primitive roots")
+    print("There are no primitive roots modulo ", modulo)
  else:
      print(primlist)
- return simp()
+ print("")    
+ print("Type 'x' with no quotes if you want to exit. Otherwise, you may continue")
+ return main()
 
 
 
@@ -57,4 +63,4 @@ def GCD(x,y):
   q = int(a/b)
   r = a%b
  return b 
-simp()
+main()
