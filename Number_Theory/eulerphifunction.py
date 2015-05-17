@@ -1,14 +1,22 @@
-def phi():
- n = int(input("Euler Phi Function input: "))
+def main():
+ n = input("Euler Phi Function input: ")
+ if (str(n) == "x"):
+  return
+ n = int(n)
+ print ("List of integers relatively prime to the input: ")
+ relativelyPrimeNums = []
  if (n==1):
-    print(1)
-    return phi()
- counter = 0
+    print([1])
+    return main()
  for i in range (1, n):
     if (GCD(i, n) == 1):
-        counter += 1
- print(counter)
- return phi()       
+        relativelyPrimeNums.append(i)
+ 
+ print(relativelyPrimeNums)
+ print("Amount of numbers relatively prime to the input:", len(relativelyPrimeNums))
+ print ("Type 'x' without the quotes to end, otherwise you may continue.")
+ print("")
+ return main()       
 
 
 
@@ -32,6 +40,6 @@ def GCD(x,y):
 
 
 
-phi()
+main()
 
  
