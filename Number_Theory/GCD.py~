@@ -1,5 +1,8 @@
 def main(): # Greatest Common Divisor calculator
- x = int(input("Put in the first value: ")) 
+ x = input("Put in the first value: ")
+ if (x == "x"):
+  return
+ x = int(x)
  y = int(input("Put in the second value: "))
  if (x > y): # figuring out which value is bigger
     a = x
