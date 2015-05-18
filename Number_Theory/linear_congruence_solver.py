@@ -1,5 +1,7 @@
-# ax = b mod m
-# m | ax - b or ax-b%m = 0
+# linear congruence solver
+# solves equations ax = b mod m for x = x0
+# inputs: a, b, m
+# output: x
 
 
 # this function finds all solutions to a linear congruence
