@@ -1,39 +1,41 @@
 # chinese remainder theorem
+# input the equations
+# output is the solution to all of the equatios
+
 def main():
- n = int(input("List the number of equations: "))
+ n = int(input("List the number of equations: ")) 
  aValues = []
  mValues = []
- print ("x = a1 mod m1")
+ print ("x = a1 mod m1") # showing the user the format
  print ("      .")
  print ("      .")
  print ("      .")
  print("x = an mod mn")
+ M = 1 # setting up to compute our M
  for i in range (0, n):
-  x = int(input("Please enter a" + str(i+1) + ": "))
-  aValues.append(x)
-  x = int(input("Please enter m" + str(i+1) + ": "))
-  mValues.append(x)
-  k = 0 
-  
- for j in range (0, n-1):
-  for i in range (k, n-2):
-   if (GCD(mValues[j], mValues[i+1]) != 1):
+  a = int(input("Please enter a" + str(i+1) + ": ")) # getting the a value for the equation
+  aValues.append(a)
+  m = int(input("Please enter m" + str(i+1) + ": ")) # getting the m value for the equation
+  mValues.append(m)
+  M*=m # multiplying or m's together to get M
+
+ # checking if our modulus values are pairwise relatively prime   
+ for j in range (0, n-1): # compare the first value to the second value; then the first value to the third value.......
+  for i in range (j+1, n): # all the way up to the second to last value compared to the last value
+   if (GCD(mValues[j], mValues[i]) != 1): # if the GCD is not 1, then our modulus values are not pairwise relatively prime
     print("Modulus values are not pairwise relatively prime")
-    return 
-  k+=1
- M = 1
+    return  # no solutions
+  
+ 
+ 
+ inverseValues=[] 
+ solution = 0 # going to be used for the answer to the system of congruences
  for i in range (0, n):
-  M*=mValues[i]
- inverseValues=[]
- for i in range (0, n):
-  inverseValues.append(inverse((M/mValues[i]), mValues[i]))
- solution = 0
- for i in range (0, n):
-  solution += aValues[i]*inverseValues[i]*M/mValues[i]
- for i in range (0, n):
-  print ("x = " + str(aValues[i]) + " mod " + str(mValues[i])) 
- print("The solution is: ")
- print ("x = " + str(int(solution%M)) + " mod " + str(M))
+  inverseValues.append(inverse((M/mValues[i]), mValues[i])) # computing the inverse values
+  solution += aValues[i]*inverseValues[i]*M/mValues[i] # adding up the values for the solution
+  print ("x = " + str(aValues[i]) + " mod " + str(mValues[i]))  # printing off each equation, one at a time
+ print("The solution is: ") # done with the loop; about to print the solution
+ print ("x = " + str(int(solution%M)) + " mod " + str(M)) # printing the solution
  return
  
  
@@ -65,10 +67,10 @@ def inverse(a, m):
  a = a%m
  for x0 in range (1, m):
   if((a*x0-1)%m==0):
-    inverse = x0
+    answer = x0
     break
  
- return inverse%m
+ return answer%m
 
 
 
