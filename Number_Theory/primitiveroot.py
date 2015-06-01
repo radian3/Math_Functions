@@ -1,4 +1,7 @@
 def main():
+ # if the lowest integer value x that satisfies a^x = 1 modn is equal to phi(n), then we have a primitive root
+ # alternate explanation: if order = phi(n), we have a primitive root
+
  primitiveRootList = [] # initializing our list that will be used to store the primitive roots
  modulus = input("Please enter the modulus: ")
  if (modulus == "x"):
