@@ -1,4 +1,7 @@
 def main(): # this function computes the order of an integer
+ # the order is the lowest such integer, x, that satisfies
+ # the congruence a^x = 1modn with (a, n) = 1
+ # note: a is the base, x is the exponent, n is the modulus
  base = input("Put in your base: ")
  if (base == "x"): # checking if user wants to exit
      return
