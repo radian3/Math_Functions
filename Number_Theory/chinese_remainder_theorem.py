@@ -6,11 +6,10 @@ def main():
  n = int(input("List the number of equations: ")) 
  aValues = []
  mValues = []
- print ("x = a1 mod m1") # showing the user the format
- print ("      .")
- print ("      .")
- print ("      .")
- print("x = an mod mn")
+ print ("") 
+ for i in range (1, n+1):
+  print("x = a" + str(i) + " mod m" + str(i)) # showing the user the format
+ print("")
  M = 1 # setting up to compute our M
  for i in range (0, n):
   a = int(input("Please enter a" + str(i+1) + ": ")) # getting the a value for the equation
@@ -71,9 +70,6 @@ def inverse(a, m):
     break
  
  return answer%m
-
-
-
 
 
 main()
