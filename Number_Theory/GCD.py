@@ -18,8 +18,7 @@ def main(): # Greatest Common Divisor calculator with Euclidean Algorithm
  print(str(a) + " = " + str(b) + "*" + str(q) + " + " + str(r)) # printing the step
  while (r !=0): # doing more iterations until we have the GCD
 
-  q = int(a/b)
-  r = a%b
+ 
   a = b
   b = r
   q = int(a/b)
