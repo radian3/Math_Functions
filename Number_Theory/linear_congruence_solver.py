@@ -15,6 +15,8 @@ def main():
  m = int(input("Put in m: "))
  b = b%m # simplifying input
  a = a%m # simplifying input
+ if (a == 0):
+     a = a + m
  numberOfSolutions = GCD(a, m) # computing the number of solutions
  if (b%numberOfSolutions!=0): # if b does not divide GCD(a, m) then there's no solutions
     print ("No Solutions.")
